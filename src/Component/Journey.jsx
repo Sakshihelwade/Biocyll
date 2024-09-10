@@ -18,11 +18,19 @@ const Journey = () => {
       </div> */}
       <section class="journey-section ">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="journey-text">
-                <h3 className='mb-2'>Our Journey</h3>
-                <p>Your journey begins here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec massa eget leo tincidunt tincidunt sit amet at odio. Integer vitae magna efficitur, consectetur ligula sed, fermentum dolor. Nulla vitae dui vel quam consequat vestibulum. Duis venenatis nisl auctor erat pretium laoreet. Curabitur ac ex nec lacus ultrices vestibulum sed sit amet magna. Aenean at ex tortor. Nam ac diam diam. Cras eu nisl quis purus ultricies dapibus. Donec ultrices varius justo, sit amet suscipit quam molestie non. Donec at orci at libero viverra facilisis in vitae ligula.</p>
+          <div class="row ">
+          <div className="col-md-12 text-center">
+          <h3 className='mb-3'>Our Journey</h3>
+          </div>
+            <div className="col-md-12 ">
+              <card>
+                {/* <img src='https://images.pexels.com/photos/614484/pexels-photo-614484.jpeg?cs=srgb&dl=pexels-tiana-18128-614484.jpg&fm=jpg' className='w-75 h-50' /> */}
+                <img src='https://media.licdn.com/dms/image/D4D12AQEnYjQB8btP6Q/article-cover_image-shrink_720_1280/0/1696486706433?e=2147483647&v=beta&t=DhTzMCJt2byaYFgF02_YB3Ky5BJ7rfj6FLROr2XNTE8' className='w-75 h-50' />
+              </card>
+            </div>
+            <div class="col-md-12  d-flex m-auto p-5 ">
+              <div class="journey-text p-5 bg-light w-75" style={{marginTop:-300,borderRadius:10 }}>
+                <p style={{ fontStyle: 'Sans Serif',  fontSize:'130%'}}>Started back in 2012 in a very tiny manufacturing facility of 500 sq.ft. area, Biocyll draws inspiration from the noble thought of helping farmers with innovative solutions leading to more yield, helping them achieve prosperity in farming. Starting with the combined experience of more than 50 years of promoters, Biocyll has come so far as to acquire many technologies and products from industry, institutions, and industry stalwarts. Now Biocyll is impacting more than millions of farmers and is recognized as the Best Company in Biologicals by Agriculture Today, Biocyll Laboratories Pvt. Ltd. stands as a testament to the growth and pioneering advancements in biological technologies.</p>
               </div>
             </div>
           </div>

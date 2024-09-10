@@ -95,12 +95,19 @@ const Register = () => {
                     />
 
                     <input
-                        type="number"
+                        type="mobile number"
                         placeholder="Mobile number"
                         name="mobileNo"
                         onChange={(e) => handleChange(e)}
                     />
-
+                    <select
+                        name="userType"
+                        onChange={(e) => handleChange(e)}
+                    >
+                        <option value="select" disabled>Select User Type</option>
+                        <option value="corporate">Corporate</option>
+                        <option value="farmer">Farmer</option>
+                    </select>
 
                     {/* <input
                         type={showPassword ? 'text' : 'password'}
@@ -122,7 +129,7 @@ const Register = () => {
                                 placeholder="Password"
                                 name="password"
                             />
-                            <span className="password-toggle"  onClick={togglePasswordVisibility}>
+                            <span className="password-toggle" onClick={togglePasswordVisibility}>
                                 {showPassword ? <i class="fa-solid fa-eye text-dark"></i> : <i class="fa-solid fa-eye-slash text-dark"></i>}
                             </span>
                         </div>

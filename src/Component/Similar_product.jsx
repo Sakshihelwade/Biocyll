@@ -34,8 +34,8 @@ const Similar_product = ({ allProducts }) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         initialSlide: 0,
         autoplay: true,
         autoplaySpeed: 3000,
@@ -88,9 +88,9 @@ const Similar_product = ({ allProducts }) => {
     }
     return (
         <>
-            <section className="tsp_bg ">
-                <h3 className=" text-center p-3"><b>Related Products</b></h3>
-                <div className="outerDiv">
+           <h2 className=" text-center p-4  mt-3 " style={{ fontFamily: 'Roboto' }}>Products For You</h2>
+      <section className=" p-3 ">
+        <div className="outerDiv">
                     <Slider {...settings}>
                         {allProducts?.map((item, index) =>
                             <div>
@@ -106,7 +106,7 @@ const Similar_product = ({ allProducts }) => {
                                         <StarRating star={item?.averageRating}/><br/>
                                         Rs.{item?.price} </p>
                                         {/* <button className="btn btn-success   float-left ">Buy now</button> */}
-                                        <button className="btn btn-success" style={{borderRadius:50,alignSelf:'center'}} onClick={()=>handleCart(item._id)}><text className='mr-3 ml-3'>Add to Cart &nbsp;<i class="fa-solid fa-angles-right"></i></text></button>
+                                        <button className="btn btn-success w-100" style={{alignSelf:'center'}} onClick={()=>handleCart(item._id)}><text className='mr-3 ml-3'>Add to Cart</text></button>
                                     </div>
                                 </div>
                             </div>

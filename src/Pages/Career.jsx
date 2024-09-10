@@ -18,18 +18,18 @@ const Career = () => {
       <section>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-12 image-container">
-              <img src="https://t4.ftcdn.net/jpg/07/92/50/39/240_F_792503905_PoWvfmapH78Zbr89f7Ytdu4h3FWjZOxw.jpg" className="d-block w-100 zoom-image" alt="..." />
+            {/* <div className="col-12 image-container"> */}
+              {/* <img src="https://t4.ftcdn.net/jpg/07/92/50/39/240_F_792503905_PoWvfmapH78Zbr89f7Ytdu4h3FWjZOxw.jpg" className="d-block w-100 zoom-image" alt="..." />
               <div className="carousel-caption d-none d-md-block">
-                <h1>Careers</h1>
-                <p >Careers <i class="fa-solid fa-chevron-right"></i> {currentComp}</p>
-              </div>
-            </div>
+                <h1>Careers</h1> */}
+                {/* <p >Careers <i class="fa-solid fa-chevron-right"></i> {currentComp}</p> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
-          <div className="row background-image-opacity">
-                <div className="col-12 text-center mb-4 mt-4">
+          <div className="row background-image-opacity p-4">
+                {/* <div className="col-12 text-center mb-4 mt-4 ">
                   <h3>Our Perks</h3>
-                </div>
+                </div> */}
                 <div class="col-xl-2 col-lg-2">
                   <div class="card c1 l-bg-blue-dark">
                     <div class="card-statistic-3 p-4">
@@ -170,7 +170,7 @@ const Career = () => {
                 </div>
               </div>
           <div className="row pt-5 pl-3 pr-3 pb-5 background-image-opacity" >
-            <div className="col-md-3 p-3 bg-white" style={{ boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }}>
+            <div className="col-md-3 p-3 bg-white sidebar-fixed-height" style={{ boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }}>
               <hr style={{ backgroundColor: 'green' }} />
               <div className={` col-12 ${currentComp === "openings" ? "text-success font-weight-bold" : ""}`} onClick={() => setCurrentComp("openings")}>Current Openings</div><hr style={{ backgroundColor: 'green' }} />
               <div className={` col-12 ${currentComp === "culture" ? "text-success font-weight-bold" : ""}`} onClick={() => setCurrentComp("culture")}>Our Culture</div><hr style={{ backgroundColor: 'green' }} />

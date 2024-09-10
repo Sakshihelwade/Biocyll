@@ -52,7 +52,7 @@ const ContactForm = () => {
                             <b><h3 className=''>Get in Touch</h3></b>
                         </div>
                         <div className="col-8 p-3">
-                            <p>Feel free to reach out to me at your convenience! We value your feedback and inquiries. Don't hesitate to reach out to us with any questions, comments, or concerns you may have. </p>
+                            <p>Reach out to us for any inquiries or information you require that isn't available here, and we'll respond promptly.</p>
                         </div>
                         <div className="col-md-5 p-5" style={{ background: 'linear-gradient(to bottom, lightgreen, green)' , color: 'white',boxShadow:' rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px'}}>
                             <p className='mb-4'><b>Phone Number :</b><br />+91 20 60202626</p>

@@ -33,7 +33,13 @@ const Blogs = () => {
                 <div className="col-md-4 bg-white">
                   <div className="card">
                     <div className="card-header">
-                      <img src={item.image} className='w-100' />
+                      {/* <img src={item.image} className='w-100' /> */}
+                      <img
+                     src={item.image}
+                      className="w-100"
+                      alt={item.title || 'News Image'}
+                      style={{ height: '200px', objectFit: 'cover' }}
+                    />
                     </div>
                     <div className="card-body">
                       <h5 className='mb-2'>
@@ -42,7 +48,8 @@ const Blogs = () => {
                       <p>
                         {item.description}
                       </p>
-                      <small>Date/Link</small>
+                      {item.Link}
+                      {/* <small>Date/Link</small> */}
                     </div>
                   </div>
                 </div>

@@ -1,1 +1,1 @@
-export const base_url= 'http://13.201.105.91:9090';
+export const base_url= 'http://localhost:9090';

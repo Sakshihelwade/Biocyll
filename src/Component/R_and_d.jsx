@@ -1,23 +1,61 @@
-import React from 'react'
-import "../Css/style.css"
+// import React from 'react'
+// import "../Css/style.css"
+
+// const R_and_d = () => {
+//   return (
+//     <>
+//       <section className='journey-section'>
+//         <div class="container-fluid">
+//           <div class="row">
+//             <div class="col-md-12">
+//               <div class="journey-text">
+//                 <h3 className='mb-2'>Research and Development</h3>
+//               </div>
+//             </div>
+//             <div className="col-md-6">
+//               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxepJDRf9DAt9m_u2niFxkFJF6sNUi-KxM4Q&s' />
+//             </div>
+//             <div className="col-md-6 journey-text">
+//               <p>We specialize in pinpointing and extracting the most potent microbial strains from various niche sources, including soil, infected insects, plants, composts, and more. Upon rigorous validation, these strains are commercialized.</p>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     </>
+//   )
+// }
+
+// export default R_and_d
+import React from 'react';
+import "../Css/style.css";
 
 const R_and_d = () => {
   return (
     <>
       <section className='journey-section'>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="journey-text">
-                <h3 className='mb-2'>R and D</h3>
-                <p>Technology & Innovation Center IPL Biologicals Limited has a world-class Technology & Innovation Center (TIC) in India with a state-of-the-art R&D facility recognized by the Department of Scientific & Industrial Research (DSIR), Ministry of Science & Technology, Govt of India. Biological products, being living micro-organisms, require very specialized handling, storage, and application protocols. We have a best-in-class Quality Policy, which ensures our products are of the highest quality. The production process follows GMP standards which include Class-100 clean room facilities etc. Quality procedures are followed to attain Zero contamination in the product.</p>
+        <div className="container-fluid" >
+          <div className="row">
+            <div className="col-md-12">
+              <div className="journey-text">
+                <h3 className='mb-2'><b>Research & Development</b></h3>
               </div>
+            </div>
+            <div className="col-md-6">
+              <img 
+                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxepJDRf9DAt9m_u2niFxkFJF6sNUi-KxM4Q&s' 
+                className='img-fluid' 
+                alt='Research and Development'
+                style={{ maxWidth: '100%', height: 'auto' }}
+              />
+            </div>
+            <div className="col-md-6 journey-text" >
+              <p>We specialize in pinpointing and extracting the most potent microbial strains from various niche sources, including soil, infected insects, plants, composts, and more. Upon rigorous validation, these strains are commercialized.</p>
             </div>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default R_and_d
+export default R_and_d;

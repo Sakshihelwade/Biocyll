@@ -3,6 +3,7 @@ import React from 'react'
 const News_details = () => {
     return (
         <>
+        
             <section className='p-5'>
                 <div className="container-fluid pl-5 pr-5">
                     <div className="row ">

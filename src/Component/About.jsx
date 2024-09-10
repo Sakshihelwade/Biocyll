@@ -5,21 +5,32 @@ import about_img from '../Assets/Images/about4.jpg'
 const About = () => {
   return (
     <>
-      <div className="row">
-        <div className="col-12 text-center mb-3 ">
-          <h3>About Us</h3>
+      <div className="row font-custom">
+        <div className="col-12 text-center mb-3 bg-white ">
+          <h3>Revolutionizing Sustainable Agriculture With Microbe Technology</h3>
         </div>
         {/* <div className="col-md-8  mb-3">
           <img src={about_img} className='w-100 about_img' style={{ borderRadius: 20 }} />
         </div> */}
-        <div className="col-9 text-center pr-5 pl-5 ">
-          <p style={{ fontStyle: 'Sans Serif' }}>
-            <div className='p-3 c1 l-bg-green mt-2' style={{ width: '100%', height: 'auto', borderTopLeftRadius: 30, borderBottomRightRadius: 30, borderBottomLeftRadius: 30 }}>
-              Biocyll is a premier e-commerce platform dedicated to providing a comprehensive range of agriculture-related products, including high-quality fertilizers, seeds, pesticides, and farming equipment. Headquartered in Pune, Biocyll operates independently, driven by a mission to revolutionize the agricultural sector through innovative and sustainable solutions.
+        <div className="col-12 text-center pr-5 pl-5 ">
+          <p style={{ fontStyle: 'Sans Serif',  fontSize:'130%'}}>
+            <div>
+              <img src='https://www.automatworld.in/blog/wp-content/uploads/2024/04/Blog-Banner-1.png'/>
+            </div>
+            <div className='p-3 bg-white' style={{ width: '100%', height: 'auto', borderTopLeftRadius: 30, borderBottomRightRadius: 30, borderBottomLeftRadius: 30 }}>
+            At Biocyll Laboratories Pvt. Ltd., we celebrate 12 years of agricultural innovation with our groundbreaking Microbe Technology. This revolutionary advancement marks a significant shift in crop cultivation and product performance, reflecting our long-standing commitment to innovation in the Indian agricultural landscape.
+
+Central to this achievement is our state-of-the-art Technology Innovation Centre, where dedicated research and development have culminated in Microbe Technology. This technology leverages high-antagonism microbial strains to ensure extended shelf life and optimal performance of our products. The Microbe Technology Advantage is more than a technological breakthrough; it represents a revolution in farming.
+
+Our specially selected microbial strains enable our products to excel in challenging conditions, climate uncertainties, and varying soil types. They offer enhanced shelf life and improved quality, promoting resilience and productivity. Microbe Technology provides targeted benefits such as increased nutrient uptake, stronger disease resistance, and efficient pest management. It embodies sustainability by optimizing resource use and minimizing environmental impact.
+
+Join us in pioneering a brighter agricultural future with Microbe Technology. Help us unlock its full potential, ensuring higher yields, extended shelf life, and unparalleled product performance.
+
+
             </div>
           </p>
         </div>
-        <div className="col-3"></div>
+        {/* <div className="col-3"></div>
         <div className="col-3"></div>
         <div className="col-9 text-center pr-5 pl-5 ">
           <p style={{ fontStyle: 'Sans Serif' }}>
@@ -34,7 +45,7 @@ const About = () => {
               Biocyll leverages its strength from a solid financial foundation, technological excellence, and a dedicated team of skilled professionals. Our commitment to innovation and sustainability drives us to continuously enhance our product offerings and services, ensuring that we meet the evolving needs of the agricultural sector. At Biocyll, we are passionate about empowering farmers and agricultural businesses with the best tools and resources to achieve optimal productivity and success.
             </div>
           </p>
-        </div>
+        </div> */}
       </div>
       {/* <section id='about_us'>
         <div  className="container-fluid  bg-light content" id="animatedContent" style={{boxShadow:' rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>

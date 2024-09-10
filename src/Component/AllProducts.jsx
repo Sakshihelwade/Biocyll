@@ -50,6 +50,8 @@ export default function AllProducts({ product }) {
 
   const getProduct = async () => {
     try {
+      console.log(id, "hii dnyaneshwari");
+      console.log("Hello");
       const response = await axios.get(`${base_url}/api/get/product/${id}`, {
         headers: {
           Authorization: `${token}`
@@ -79,7 +81,7 @@ export default function AllProducts({ product }) {
       })
       const filteredProducts = response.data.filter(item => item._id !== id);
       setAllproducts(filteredProducts);
-      console.log(response.data,"hi")
+      console.log(response.data, "hi")
     } catch (error) {
       if (error.response) {
         console.error('Error:', error.response.status, error.response.data);
@@ -106,7 +108,7 @@ export default function AllProducts({ product }) {
     }
   }
 
-  
+
   const handleQuantity = async (itemId, action) => {
     try {
       const response = await axios.put(
@@ -128,7 +130,8 @@ export default function AllProducts({ product }) {
   }
 
   const isInCart = (productId) => {
-    return cartItems.find(item => item.product._id === productId);
+    console.log(cartItems,"Hii")
+    return cartItems.find(item => item.product?._id === productId);
   }
 
   var settings = {
@@ -198,17 +201,20 @@ export default function AllProducts({ product }) {
               <div key={index}>
                 <div className="card product_div">
                   <NavLink to={`/product_details/${item?._id}`}>
+                  {console.log(item._id)}
                     <div className="card-header image_div">
                       <img src={item.images[0].url} className=" w-100 h-100" />
                     </div>
                   </NavLink>
-                  <div className="card-body details_div"  >
+                  <div className="card-body details_div" style={{ fontSize: 12, fontWeight: "bold" }}  >
                     {item.title}<br />
                     <text style={{ color: "green" }}><i className="fa-solid fa-indian-rupee-sign" ></i>{item.price}<br /></text>
+                  </div>
+                  <div className="card-footer p-0" style={{backgroundColor:'white'}}>
                     {isInCart(item._id) ? (
-                      <div className="col-12">
-                        <button onClick={() => handleQuantity(item._id, "decrement")}  className='btn btn-sm border border-success' style={{ float: 'left' }}>-</button>
-                        {cartItems.find(cartItem => cartItem.product._id === item._id)?.quantity}
+                      <div className="col-12 p-0">
+                        <button onClick={() => handleQuantity(item._id, "decrement")} className='btn btn-sm border border-success' style={{ float: 'left' }}>-</button>
+                        <text className="mx-4">{cartItems.find(cartItem => cartItem.product._id === item._id)?.quantity}</text>
                         <button className='btn btn-sm border border-success' onClick={() => handleQuantity(item._id, "increment")} style={{ float: 'right' }}>+</button>
                       </div>
                     ) : (
@@ -230,3 +236,174 @@ export default function AllProducts({ product }) {
     </>
   );
 }
+// import React, { useContext, useEffect, useState } from "react";
+// import { NavLink, useParams } from "react-router-dom";
+// import { UserContext } from "../Context/CreateContext";
+// import { ToastContainer, toast } from "react-toastify";
+// import axios from "axios";
+// import { base_url } from "../Config/Index";
+// import "react-toastify/dist/ReactToastify.css";
+
+// export default function AllProducts({ product }) {
+//   const { user, token, login, logout } = useContext(UserContext);
+//   const [Homeproduct, setHomeproduct] = useState();
+//   const { id } = useParams();
+//   const [allProducts, setAllproducts] = useState();
+//   const [selectedCategory, setSelectedcategory] = useState("");
+//   const [cardId, setCardId] = useState();
+//   const [cartItems, setCartitems] = useState([]);
+
+//   useEffect(() => {
+//     getProduct();
+//   }, [id]);
+
+//   useEffect(() => {
+//     getAllProduct();
+//   }, []);
+
+//   useEffect(() => {
+//     getCartItems();
+//   }, []);
+
+//   const handleCart = async (productId) => {
+//     const payload = {
+//       product: productId,
+//       quantity: 1,
+//     };
+//     try {
+//       const response = await axios.post(`${base_url}/api/post/card`, payload, {
+//         headers: {
+//           Authorization: `${token}`,
+//         },
+//       });
+//       toast.success("Item Added Successfully");
+//       getCartItems();
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const getProduct = async () => {
+//     try {
+//       const response = await axios.get(`${base_url}/api/get/product/${id}`, {
+//         headers: {
+//           Authorization: `${token}`,
+//         },
+//       });
+//       setSelectedcategory(response.data.category);
+//       setHomeproduct(response.data);
+//     } catch (error) {
+//       console.error("Error:", error.message);
+//     }
+//   };
+
+//   const getAllProduct = async () => {
+//     try {
+//       const response = await axios.get(
+//         `${base_url}/api/get/all/products?categoryId=${selectedCategory}`,
+//         {
+//           headers: {
+//             Authorization: `${token}`,
+//           },
+//         }
+//       );
+//       const filteredProducts = response.data.filter((item) => item._id !== id);
+//       setAllproducts(filteredProducts);
+//     } catch (error) {
+//       console.error("Error:", error.message);
+//     }
+//   };
+
+//   const getCartItems = async () => {
+//     try {
+//       const response = await axios.get(`${base_url}/api/get/card`, {
+//         headers: {
+//           Authorization: `${token}`,
+//         },
+//       });
+//       setCartitems(response.data.items);
+//       setCardId(response.data._id);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const handleQuantity = async (itemId, action) => {
+//     try {
+//       const response = await axios.put(
+//         `${base_url}/api/carts/${cardId}/items/${itemId}`,
+//         { action: action },
+//         {
+//           headers: {
+//             Authorization: `${token}`,
+//           },
+//         }
+//       );
+//       if (response.status === 200) {
+//         getCartItems();
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       toast.error("Item Out of Stock");
+//     }
+//   };
+
+//   const isInCart = (productId) => {
+//     return cartItems.find((item) => item.product._id === productId);
+//   };
+
+//   return (
+//     <>
+//       <h2 className="text-center p-4 mt-3" style={{ fontFamily: "Roboto" }}>
+//         Products For You
+//       </h2>
+//       <section className="p-3">
+//         <div className="row">
+//           {product?.map((item, index) => (
+//             <div key={index} className="col-md-4 mb-4">
+//               <div className="card product_div">
+//                 <NavLink to={`/product_details/${item?._id}`}>
+//                   <div className="card-header image_div">
+//                     <img
+//                       src={item.images[0].url}
+//                       className="w-100 h-100"
+//                       alt={item.title}
+//                     />
+//                   </div>
+//                 </NavLink>
+//                 <div className="card-body details_div" style={{ fontSize: 12, fontWeight: "bold" }}>
+//                   {item.title}
+//                   <br />
+//                   <span style={{ color: "green" }}>
+//                     <i className="fa-solid fa-indian-rupee-sign"></i>
+//                     {item.price}
+//                     <br />
+//                   </span>
+//                 </div>
+//                 <div className="card-footer p-0" style={{ backgroundColor: "white" }}>
+//                   {isInCart(item._id) ? (
+//                     <div className="col-12 p-0">
+//                       <button onClick={() => handleQuantity(item._id, "decrement")} className="btn btn-sm border border-success" style={{ float: "left" }}>-</button>
+//                       <span className="mx-4">{cartItems.find(cartItem => cartItem.product._id === item._id)?.quantity}</span>
+//                       <button className="btn btn-sm border border-success" onClick={() => handleQuantity(item._id, "increment")} style={{ float: "right" }}>+</button>
+//                     </div>
+//                   ) : (
+//                     <button className="btn btn-sm btn-success w-100" onClick={() => handleCart(item._id)} style={{ alignSelf: "center" }}>
+//                       Add to Cart
+//                     </button>
+//                   )}
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//         <NavLink to="/product_page">
+//           <button className="btn text-primary" style={{ backgroundColor: "transparent", border: 0, float: "right" }}>
+//             View More
+//           </button>
+//         </NavLink>
+//       </section>
+//       <ToastContainer />
+//     </>
+//   );
+// }

@@ -78,11 +78,13 @@ const Contact = () => {
           <div className="col-12 image-container ">
               <img src="https://t4.ftcdn.net/jpg/07/92/50/39/240_F_792503905_PoWvfmapH78Zbr89f7Ytdu4h3FWjZOxw.jpg" class="d-block w-100 zoom-image" alt="..." />
               <div className="carousel-caption d-none d-md-block">
-                <h3 style={{ marginBottom: 180 }}>Contact us</h3>
+                <h3 style={{ marginBottom: 20 }}>Contact us</h3>
+                {/* <p>Reach out to us for any inquiries or information you require that isn't available here, and we'll respond promptly.</p> */}
               </div>
             </div>
           </div>
-          <div className="row p-5" >
+          <div className="row p-5" style={{display:'flex',margin:'auto'}} >
+            <p style={{padding:15,fontSize:25}}>Reach out to us for any inquiries or information you require that isn't available here, and we'll respond promptly.</p>
             <div className="col-md-5 bg-success p-5 text-white">
               <b><h3 className='mb-2'>Get in Touch</h3></b><br />
               <p className='mb-4'><b>Phone Number :</b><br />+91 20 60202626</p>

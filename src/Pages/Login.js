@@ -49,14 +49,16 @@ export default function Login() {
         if (validateForm()) {
             try {
                 const response = await axios.post(`${base_url}/api/login`, values);
+                var Id = response.data.user._id
                 // console.log(response)
+                toast.success("Logged in Successfully")
                 if (response.data.status == true) {
                     // alert(response.data.message)
                     // toast.error(response.data.message, toastOptions);
                     // localStorage.setItem("values", JSON.stringify(response.data.user))
                     // localStorage.setItem("token", response.data.token)
                     login(response.data.user, response.data.token)
-                    navigate("/")
+                    navigate(`/`)
                 }
 
             }

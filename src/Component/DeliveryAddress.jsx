@@ -240,12 +240,22 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
     country: '',
     pincode: '',
     formattedAddress: '',
+    landmark: "",
     alternateNo: "",
-    addressType: "",
-    landmark: ""
+    addressType: ""
+    
   });
 
   const { user, token } = useContext(UserContext);
+
+  // const handleChange = (event) => {
+  //   const { name, value, type, checked } = event.target;
+  //   if (type === 'radio') {
+  //     setAddress({ ...address, addressType: value });
+  //   } else {
+  //     setAddress({ ...address, [name]: value });
+  //   }
+  // };
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -255,7 +265,7 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
       setAddress({ ...address, [name]: value });
     }
   };
-
+  
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -336,7 +346,57 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
     return component ? component.long_name : '';
   };
 
+  const validateAddress = () => {
+    const requiredFields = ['name', 'mobile', 'locality', 'city', 'state', 'country', 'pincode', 'addressType'];
+    
+    for (const field of requiredFields) {
+      if (!address[field] || address[field].trim() === '') {
+        alert(`Please fill in the ${field} field.`);
+        return false;
+      }
+    }
+  
+    // Additional validation for mobile field to ensure it is a 10-digit number
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(address.mobile)) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return false;
+    }
+  
+    return true;
+  };
+  
+
+  // const handleSubmit = async () => {
+  //   const payload = {
+  //     pincode: Number(address.pincode),
+  //     state: address.state,
+  //     city: address.city,
+  //     locality: address.locality,
+  //     address: address.formattedAddress,
+  //     name: address.name,
+  //     landmark: address.landmark,
+  //     alternatePhone: address.alternateNo,
+  //     addressType: address.addressType
+  //   };
+
+  //   try {
+  //     const response = await axios.post(`${base_url}/api/post/address`, payload, {
+  //       headers: {
+  //         Authorization: `${token}`
+  //       }
+  //     });
+  //     alert(response.data.message);
+  //     setAddressToggle(false);
+  //     getAddress();
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert(error.response.data.message);
+  //   }
+  // };
   const handleSubmit = async () => {
+    if (!validateAddress()) return; // Stop if validation fails
+  
     const payload = {
       pincode: Number(address.pincode),
       state: address.state,
@@ -345,25 +405,29 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
       address: address.formattedAddress,
       name: address.name,
       landmark: address.landmark,
+      mobile: address.mobile, // Ensure the mobile field is included
       alternatePhone: address.alternateNo,
-      addressType: address.addressType
+      addressType: address.addressType,
     };
-
+  
     try {
       const response = await axios.post(`${base_url}/api/post/address`, payload, {
         headers: {
-          Authorization: `${token}`
-        }
+          Authorization: `${token}`,
+        },
       });
       alert(response.data.message);
       setAddressToggle(false);
       getAddress();
     } catch (error) {
       console.error(error);
-      alert(error.response.data.message);
+      alert(error.response?.data?.message || 'An error occurred');
     }
   };
+  
 
+  
+  
   return (
     <>
       <div className="card mt-4">
@@ -382,7 +446,7 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
               <input className='form-control' type='text' placeholder='Name' onChange={handleChange} name='name' value={address.name} />
             </div>
             <div className="col-md-6 mt-4">
-              <input className='form-control' type='text' placeholder='10-digit mobile number' onChange={handleChange} name='mobile' value={address.mobile || user.mobileNo} />
+              <input className='form-control' type='text' placeholder=' mobile number' onChange={handleChange} name='mobile' value={address.mobile || user.mobileNo} />
             </div>
             <div className="col-md-6 mt-4">
               <input className='form-control' type='text' placeholder='Pincode' onChange={handleChange} name='pincode' value={address.pincode} />
@@ -390,11 +454,22 @@ const DeliveryAddress = ({ getAddress, setAddressToggle }) => {
             <div className="col-md-6 mt-4">
               <input className='form-control' type='text' placeholder='Locality' onChange={handleChange} name='locality' value={address.locality} />
             </div>
-            <div className="col-md-6 mt-4">
+            {/* <div className="col-md-6 mt-4">
               <textarea className='form-control' placeholder='Village' onChange={handleChange} name='formattedAddress' value={address.formattedAddress}></textarea>
-            </div>
+            </div> */}
             <div className="col-md-6 mt-4">
               <input className='form-control' type='text' placeholder='City/district/town' onChange={handleChange} name='city' value={address.city} />
+            </div>
+
+            <div className="col-md-6 mt-4">
+              <input className='form-control' type='text' placeholder='State' onChange={handleChange} name='state' value={address.state} />
+            </div>
+
+            <div className="col-md-6 mt-4">
+              <input className='form-control' type='text' placeholder='Country' onChange={handleChange} name='country' value={address.country} />
+            </div>
+            <div className="col-md-6 mt-4">
+              <textarea className='form-control' placeholder='Address' onChange={handleChange} name='formattedAddress' value={address.formattedAddress}></textarea>
             </div>
             <div className="col-md-6 mt-4">
               <input className='form-control' type='text' placeholder='Landmark(optional)' onChange={handleChange} name='landmark' value={address.landmark} />

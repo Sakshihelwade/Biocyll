@@ -38,8 +38,14 @@ const Cart = () => {
       console.log(error)
     }
   }
+  
   // console.log("null",cartItems)
+  // const handleRemoveItem = () => {
+    // const isConfirmed = window.confirm('Are you sure you want to delete this cart?');
+    // if (isConfirmed) {
   const handleRemoveItem = async (productId) => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this Item?');
+    if (isConfirmed) {
     // console.log(productId)
     try {
       const response = await axios.delete(`${base_url}/api/delete/card/${productId}`, {
@@ -54,6 +60,20 @@ const Cart = () => {
       console.log(error)
       
     }
+    
+          // Your delete logic here
+          alert('Item deleted successfully!');
+      }
+    toast.success('Item removed from the cart!', {
+      position: "top-right",
+      autoClose: 2000, 
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      // theme: "colored",
+    });
   }
   
 
